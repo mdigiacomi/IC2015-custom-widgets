@@ -1,0 +1,18 @@
+<form role="form">
+  <div class="form-group">
+    <label for="url">Application:  </label>
+    <option ng-repeat="item in items" value="{{item.id}}">
+        {{item.name}}
+    </option>
+  </div>
+    <div class="form-group">
+    <label for="url">Application Group</label>
+    <option ng-repeat="item in items" value="{{item.id}}">
+        {{item.name}}
+    </option>
+  </div>
+  <div class="form-group">
+    <label for="url">Height</label>
+    <input type="text" class="form-control" id="url" ng-model="config.height">
+  </div>
+</form>
