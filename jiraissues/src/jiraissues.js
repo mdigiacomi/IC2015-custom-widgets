@@ -11,10 +11,13 @@ angular.module('adf.widget.jiraissues', ['adf.provider', 'ngSanitize'])
         reload: true,
         resolve: {
           data: function(jiraissuesService, config){
-            config.location=" ";
-            if (config.location != null){
-              return jiraissuesService.get(config.location);
+            if (config.jiraproject != null){ }
+            else
+            {
+              config.jiraproject = "project-10000";
             }
+
+            return jiraissuesService.get(config.jiraproject);
           }
         },
         edit: {
@@ -23,12 +26,11 @@ angular.module('adf.widget.jiraissues', ['adf.provider', 'ngSanitize'])
       });
   }).service('jiraissuesService', function($q, $http){
     return {
-      get: function(location){
+      get: function(jiraproject){
         var deferred = $q.defer();
-        var url = location;
         $http({
           method: 'GET',
-          url: "https://jira.digitaladrenalin.net/rest/gadget/1.0/stats/generate?includeResolvedIssues=true&projectOrFilterId=project-10000&sortBy=natural&sortDirection=asc&statType=statuses"
+          url: "https://jira.digitaladrenalin.net/rest/gadget/1.0/stats/generate?includeResolvedIssues=true&projectOrFilterId=" + jiraproject + "&sortBy=natural&sortDirection=asc&statType=statuses"
         }).success(function(data){
               deferred.resolve(data);
           })

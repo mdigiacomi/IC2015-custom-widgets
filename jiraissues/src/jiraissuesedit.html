@@ -1,5 +1,6 @@
-<div class="text-center">
-  <div class="alert alert-info" ng-if="!data">
-    Please insert a location in the widget configuration
+<form role="form">
+  <div class="form-group">
+    <label for="rssurl">Jira Project ID:</label>
+    <input type="rssurl" class="form-control" id="jiraproject" ng-model="config.jiraproject" placeholder="project-10000" />
   </div>
-</div>
+ </form>
