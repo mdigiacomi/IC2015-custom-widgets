@@ -1,0 +1,1 @@
+http://localhost:9200/_search/?q=AppName:IC%20Test%20Application&q=MessageType:Error
